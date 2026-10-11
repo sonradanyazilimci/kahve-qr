@@ -1,6 +1,6 @@
 # main dalına her push'ta siteyi FTP ile sunucudaki kahve-qr klasörüne yükler.
-# Gerekli GitHub Secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_SERVER_DIR
-# (FTP_SERVER_DIR örneği: public_html/kahve-qr/  — sonunda / olmalı)
+# Gerekli GitHub Secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
+# Hedef klasör (server-dir) FTP hesabının kök dizinine göredir; kök dizin sitenin public_html klasörüdür.
 name: Sunucuya yükle
 
 on:
@@ -20,7 +20,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER || vars.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME || vars.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD || vars.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR || vars.FTP_SERVER_DIR }}
+          server-dir: kahve-qr/
           protocol: ftps
           exclude: |
             **/.git*
