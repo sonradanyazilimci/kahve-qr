@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Yönetici: meta/owner belgesindeki uid ile giriş yapan kişi.
+    function isOwner() {
+      return request.auth != null
+        && get(/databases/$(database)/documents/meta/owner).data.uid == request.auth.uid;
+    }
+
+    // Site içeriği (ürünler dahil): herkes okur, yalnızca yönetici yazar.
+    match /site/{doc} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+
+    // Yönetici kaydı: ilk kurulumda bir kez oluşturulur, sonra değiştirilemez ve silinemez.
+    match /meta/owner {
+      allow get: if true;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid'])
+        && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+  }
+}

@@ -1,0 +1,4 @@
+.playwright-mcp/
+.firebase/
+*.log
+node_modules/

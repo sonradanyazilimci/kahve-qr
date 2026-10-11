@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Yönetim Paneli — QR Menü</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2730%27 fill=%27%23080808%27 stroke=%27%23fff%27 stroke-width=%272%27/%3E%3Cpath d=%27M22 44c10 2 20-6 20-18%27 fill=%27none%27 stroke=%27%23fff%27 stroke-width=%273%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Jost:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="assets/css/admin.css?v=3">
+</head>
+<body>
+
+  <!-- Giriş -->
+  <form class="login" id="login" novalidate>
+    <div class="login__box">
+      <p class="eyebrow">Yönetim Paneli</p>
+      <h1 id="loginTitle">Hoş geldiniz.</h1>
+      <p class="hint" id="loginHint" hidden></p>
+      <label class="field">
+        <span class="field__label">E-posta</span>
+        <input type="email" id="loginEmail" autocomplete="username" autofocus>
+      </label>
+      <label class="field">
+        <span class="field__label">Şifre</span>
+        <input type="password" id="loginPass" autocomplete="current-password">
+      </label>
+      <p class="msg is-bad" id="loginMsg" hidden></p>
+      <button class="btn btn--solid" type="submit" id="loginBtn">Giriş yap</button>
+      <button class="link-btn" type="button" id="forgot">Şifremi unuttum</button>
+    </div>
+  </form>
+
+  <div class="app" id="app" hidden>
+    <aside class="side">
+      <div class="side__brand"><span class="mark" id="sideMark">M</span><span id="sideName">Panel</span></div>
+      <nav class="side__nav" id="sideNav"></nav>
+    </aside>
+
+    <div class="main">
+      <header class="top">
+        <div>
+          <h2 id="sectionTitle"></h2>
+          <p class="top__desc" id="sectionDesc"></p>
+        </div>
+        <div class="top__actions">
+          <span class="status" id="status">Kaydedildi</span>
+          <button class="btn btn--solid" type="button" id="publish" disabled>Yayınla</button>
+          <a class="btn" href="index.html" target="kahveqr-onizleme">Siteyi aç ↗</a>
+          <button class="btn" type="button" id="logout">Çıkış</button>
+        </div>
+      </header>
+      <div class="content" id="content"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script src="assets/js/defaults.js?v=3"></script>
+  <script src="assets/js/store.js?v=3"></script>
+  <script src="assets/js/firebase-config.js?v=3"></script>
+  <script src="assets/js/cloud.js?v=3"></script>
+  <script src="assets/js/admin.js?v=3" defer></script>
+</body>
+</html>
